@@ -60,7 +60,7 @@ export default function Footer() {
     <footer className="relative w-full bg-[#181918] text-white pt-12 pb-8 px-6 sm:px-10 lg:px-16 overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Floating Dark Card Container */}
-        <div className="bg-[#0f100f] border border-zinc-800/80 rounded-[2.5rem] p-8 sm:p-12 lg:p-14 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
+        <div data-reveal="up" className="bg-[#0f100f] border border-zinc-800/80 rounded-[2.5rem] p-8 sm:p-12 lg:p-14 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
           {/* Left Column: Navigation Links */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/3">
             <h4 className="text-lg sm:text-xl font-bold text-white mb-4 tracking-tight">
@@ -70,7 +70,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#services"
-                  className="hover:text-white transition-colors duration-200"
+                  className="nav-link hover:text-white transition-colors duration-200"
                 >
                   Services
                 </Link>
@@ -78,7 +78,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#process"
-                  className="hover:text-white transition-colors duration-200"
+                  className="nav-link hover:text-white transition-colors duration-200"
                 >
                   Process
                 </Link>
@@ -86,7 +86,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#contact"
-                  className="hover:text-white transition-colors duration-200"
+                  className="nav-link hover:text-white transition-colors duration-200"
                 >
                   Contact
                 </Link>
@@ -119,7 +119,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 rounded-xl bg-[#1c1e1c] border border-zinc-800 text-zinc-300 hover:text-white hover:border-[#9EFF00] hover:bg-black flex items-center justify-center transition-all duration-300 shadow-xs hover:scale-110"
+                className="w-9 h-9 rounded-xl bg-[#1c1e1c] border border-zinc-800 text-zinc-300 hover:text-white hover:border-[#9EFF00] hover:bg-black flex items-center justify-center transition-all duration-300 shadow-xs hover:scale-110 hover:-translate-y-1 hover:-rotate-6"
               >
                 <IconInstagram />
               </a>
@@ -128,7 +128,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X (Twitter)"
-                className="w-9 h-9 rounded-xl bg-[#1c1e1c] border border-zinc-800 text-zinc-300 hover:text-white hover:border-[#9EFF00] hover:bg-black flex items-center justify-center transition-all duration-300 shadow-xs hover:scale-110"
+                className="w-9 h-9 rounded-xl bg-[#1c1e1c] border border-zinc-800 text-zinc-300 hover:text-white hover:border-[#9EFF00] hover:bg-black flex items-center justify-center transition-all duration-300 shadow-xs hover:scale-110 hover:-translate-y-1 hover:-rotate-6"
               >
                 <IconX />
               </a>
@@ -137,7 +137,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="w-9 h-9 rounded-xl bg-[#1c1e1c] border border-zinc-800 text-zinc-300 hover:text-white hover:border-[#9EFF00] hover:bg-black flex items-center justify-center transition-all duration-300 shadow-xs hover:scale-110"
+                className="w-9 h-9 rounded-xl bg-[#1c1e1c] border border-zinc-800 text-zinc-300 hover:text-white hover:border-[#9EFF00] hover:bg-black flex items-center justify-center transition-all duration-300 shadow-xs hover:scale-110 hover:-translate-y-1 hover:-rotate-6"
               >
                 <IconLinkedin />
               </a>
@@ -146,7 +146,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="w-9 h-9 rounded-xl bg-[#1c1e1c] border border-zinc-800 text-zinc-300 hover:text-white hover:border-[#9EFF00] hover:bg-black flex items-center justify-center transition-all duration-300 shadow-xs hover:scale-110"
+                className="w-9 h-9 rounded-xl bg-[#1c1e1c] border border-zinc-800 text-zinc-300 hover:text-white hover:border-[#9EFF00] hover:bg-black flex items-center justify-center transition-all duration-300 shadow-xs hover:scale-110 hover:-translate-y-1 hover:-rotate-6"
               >
                 <IconFacebook />
               </a>
@@ -155,7 +155,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Google"
-                className="w-9 h-9 rounded-xl bg-[#1c1e1c] border border-zinc-800 text-zinc-300 hover:text-white hover:border-[#9EFF00] hover:bg-black flex items-center justify-center transition-all duration-300 shadow-xs hover:scale-110"
+                className="w-9 h-9 rounded-xl bg-[#1c1e1c] border border-zinc-800 text-zinc-300 hover:text-white hover:border-[#9EFF00] hover:bg-black flex items-center justify-center transition-all duration-300 shadow-xs hover:scale-110 hover:-translate-y-1 hover:-rotate-6"
               >
                 <IconGoogle />
               </a>
@@ -169,6 +169,7 @@ export default function Footer() {
             </h4>
             <Link
               href="#contact"
+              data-magnetic
               className="group inline-flex items-center gap-3 bg-[#9EFF00] hover:bg-[#8ee600] text-black font-extrabold text-sm sm:text-base pl-6 pr-2 py-2.5 rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(158,255,0,0.35)] hover:shadow-[0_0_35px_rgba(158,255,0,0.65)] hover:scale-105 cursor-pointer"
             >
               <span>Contact Us</span>
@@ -205,7 +206,8 @@ export default function Footer() {
           {[20, 40, 60, 80, 100, 120, 140].map((y, idx) => (
             <path
               key={idx}
-              d={`M -100 ${y} C 140 ${y - 25}, 320 ${y + 25}, 500 ${y} C 680 ${y - 25}, 860 ${y + 25}, 1040 ${y} C 1220 ${y - 25}, 1400 ${y + 25}, 1600 ${y}`}
+              d={`M -80 ${y} C 120 ${y - 25}, 280 ${y + 25}, 480 ${y} C 680 ${y - 25}, 840 ${y + 25}, 1040 ${y} C 1240 ${y - 25}, 1400 ${y + 25}, 1600 ${y} C 1800 ${y - 25}, 1960 ${y + 25}, 2160 ${y}`}
+              className="wave-flow"
               stroke="url(#footerWaveGrad)"
               strokeWidth="1.2"
               fill="none"

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import type { CSSProperties } from "react";
 
 export default function ServiceCTA() {
   return (
@@ -26,7 +27,8 @@ export default function ServiceCTA() {
             (y, index) => (
               <path
                 key={index}
-                d={`M -100 ${y} C 120 ${y - 32}, 280 ${y + 32}, 480 ${y} C 680 ${y - 32}, 840 ${y + 32}, 1040 ${y} C 1240 ${y - 32}, 1400 ${y + 32}, 1600 ${y}`}
+                d={`M -80 ${y} C 120 ${y - 32}, 280 ${y + 32}, 480 ${y} C 680 ${y - 32}, 840 ${y + 32}, 1040 ${y} C 1240 ${y - 32}, 1400 ${y + 32}, 1600 ${y} C 1800 ${y - 32}, 1960 ${y + 32}, 2160 ${y}`}
+                className="wave-flow"
                 stroke="url(#lineGrad)"
                 strokeWidth="1.6"
                 fill="none"
@@ -39,13 +41,16 @@ export default function ServiceCTA() {
       {/* Center CTA Text Container */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 text-center">
         {/* Left Text */}
-        <span className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold text-black tracking-tight leading-none">
+        <span data-reveal="left" className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold text-black tracking-tight leading-none">
           Want to
         </span>
 
         {/* Discuss Button */}
         <Link
           href="#contact"
+          data-reveal="scale"
+          data-magnetic
+          style={{ "--reveal-delay": "120ms" } as CSSProperties}
           className="group inline-flex items-center gap-2.5 sm:gap-3 bg-[#9EFF00] hover:bg-[#8ee600] text-black font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[50px] pl-5 pr-2 py-1.5 sm:pl-7 sm:pr-2.5 sm:py-2 md:pl-8 md:pr-3 md:py-2.5 rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(158,255,0,0.55)] hover:shadow-[0_0_45px_rgba(158,255,0,0.8)] hover:scale-105 my-1"
         >
           <span>Discuss</span>
@@ -55,7 +60,10 @@ export default function ServiceCTA() {
         </Link>
 
         {/* Right Text */}
-        <span className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold text-black tracking-tight leading-none">
+        <span
+          data-reveal="right"
+          style={{ "--reveal-delay": "240ms" } as CSSProperties}
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold text-black tracking-tight leading-none">
           your needs?
         </span>
       </div>

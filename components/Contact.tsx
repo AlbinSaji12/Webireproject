@@ -35,11 +35,11 @@ export default function Contact() {
       className="relative w-full bg-[#181918] text-white py-24 px-6 sm:px-10 lg:px-16 overflow-hidden"
     >
       {/* Diagonal Neon Green Ray Background Accent */}
-      <div className="absolute -left-28 -top-20 bottom-0 w-[450px] bg-gradient-to-r from-transparent via-[#9EFF00]/25 to-transparent blur-3xl -rotate-[35deg] pointer-events-none select-none z-0" />
+      <div className="absolute -left-28 -top-20 bottom-0 w-[450px] bg-gradient-to-r from-transparent via-[#9EFF00]/25 to-transparent blur-3xl -rotate-[35deg] breathe pointer-events-none select-none z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* Left Column: Heading & Copy */}
-        <div className="lg:col-span-5 flex flex-col items-start pt-2">
+        <div data-reveal="left" className="lg:col-span-5 flex flex-col items-start pt-2">
           {/* Tag Pill */}
           <div className="mb-6">
             <span className="bg-[#2a2c2a] text-zinc-300 text-xs font-semibold px-4 py-1.5 rounded-full border border-zinc-700/40 tracking-wide">
@@ -62,7 +62,11 @@ export default function Contact() {
         </div>
 
         {/* Right Column: Contact Form */}
-        <div className="lg:col-span-7 w-full">
+        <div
+          data-reveal="right"
+          style={{ "--reveal-delay": "150ms" } as React.CSSProperties}
+          className="lg:col-span-7 w-full"
+        >
           {submitted ? (
             <div className="bg-[#121312] border border-[#9EFF00]/40 rounded-2xl p-10 flex flex-col items-center text-center shadow-2xl animate-fade-in">
               <CheckCircle className="w-16 h-16 text-[#9EFF00] mb-4" />
@@ -94,7 +98,7 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full bg-[#1e201e] border border-zinc-700/60 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-sm focus:outline-none focus:border-[#9EFF00] transition-colors"
+                    className="w-full bg-[#1e201e] border border-zinc-700/60 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-sm focus:outline-none focus:border-[#9EFF00] focus:shadow-[0_0_0_4px_rgba(158,255,0,0.12)] focus:-translate-y-0.5 transition-all duration-300"
                   />
                 </div>
 
@@ -111,7 +115,7 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full bg-[#1e201e] border border-zinc-700/60 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-sm focus:outline-none focus:border-[#9EFF00] transition-colors"
+                    className="w-full bg-[#1e201e] border border-zinc-700/60 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-sm focus:outline-none focus:border-[#9EFF00] focus:shadow-[0_0_0_4px_rgba(158,255,0,0.12)] focus:-translate-y-0.5 transition-all duration-300"
                   />
                 </div>
               </div>
@@ -129,7 +133,7 @@ export default function Contact() {
                       onChange={(e) =>
                         setFormData({ ...formData, projectType: e.target.value })
                       }
-                      className="w-full bg-[#1e201e] border border-zinc-700/60 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-sm appearance-none focus:outline-none focus:border-[#9EFF00] transition-colors pr-10 cursor-pointer"
+                      className="w-full bg-[#1e201e] border border-zinc-700/60 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-sm appearance-none focus:outline-none focus:border-[#9EFF00] focus:shadow-[0_0_0_4px_rgba(158,255,0,0.12)] focus:-translate-y-0.5 transition-all duration-300 pr-10 cursor-pointer"
                     >
                       <option value="" disabled className="bg-[#181918] text-zinc-500">
                         Select a Project Type
@@ -166,7 +170,7 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className="w-full bg-[#1e201e] border border-zinc-700/60 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-sm focus:outline-none focus:border-[#9EFF00] transition-colors"
+                    className="w-full bg-[#1e201e] border border-zinc-700/60 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-sm focus:outline-none focus:border-[#9EFF00] focus:shadow-[0_0_0_4px_rgba(158,255,0,0.12)] focus:-translate-y-0.5 transition-all duration-300"
                   />
                 </div>
               </div>
@@ -185,7 +189,7 @@ export default function Contact() {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="w-full bg-[#1e201e] border border-zinc-700/60 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-sm focus:outline-none focus:border-[#9EFF00] transition-colors resize-none"
+                  className="w-full bg-[#1e201e] border border-zinc-700/60 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 text-sm focus:outline-none focus:border-[#9EFF00] focus:shadow-[0_0_0_4px_rgba(158,255,0,0.12)] focus:-translate-y-0.5 transition-all duration-300 resize-none"
                 />
               </div>
 
@@ -193,6 +197,7 @@ export default function Contact() {
               <div className="flex justify-end mt-2">
                 <button
                   type="submit"
+                  data-magnetic
                   className="bg-[#9EFF00] hover:bg-[#8ee600] text-black font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(158,255,0,0.4)] hover:shadow-[0_0_35px_rgba(158,255,0,0.65)] hover:scale-105 cursor-pointer"
                 >
                   Send Message

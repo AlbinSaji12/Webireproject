@@ -42,7 +42,7 @@ export default function Process() {
     >
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Top Tag & Section Header */}
-        <div className="flex flex-col items-center mb-12 sm:mb-16">
+        <div data-reveal="up" className="flex flex-col items-center mb-12 sm:mb-16">
           <span className="bg-[#2a2c2a] text-zinc-300 text-xs font-semibold px-4 py-1.5 rounded-full border border-zinc-700/40 mb-4 tracking-wide">
             Our Process
           </span>
@@ -56,6 +56,7 @@ export default function Process() {
           {PROCESS_STEPS.map((item, index) => (
             <div
               key={item.step}
+              data-reveal="scale"
               style={{
                 top: `calc(7rem + ${index * 1.5}rem)`,
               }}

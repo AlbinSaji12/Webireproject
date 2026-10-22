@@ -163,7 +163,7 @@ export default function Works() {
     >
       <div className="max-w-7xl mx-auto">
         {/* Top Tag & Title */}
-        <div className="flex flex-col items-center mb-8 sm:mb-12">
+        <div data-reveal="up" className="flex flex-col items-center mb-8 sm:mb-12">
           <span className="bg-[#2a2c2a] text-zinc-300 text-xs font-semibold px-4 py-1.5 rounded-full border border-zinc-700/40 mb-4 tracking-wide">
             Works
           </span>
@@ -173,7 +173,7 @@ export default function Works() {
         </div>
 
         {/* Carousel Navigation Buttons Top-Right */}
-        <div className="flex justify-end items-center gap-3 mb-6">
+        <div data-reveal="right" className="flex justify-end items-center gap-3 mb-6">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
             aria-label="Previous Slide"
@@ -215,11 +215,13 @@ export default function Works() {
               spaceBetween: 28,
             },
           }}
+          data-reveal="up"
+          style={{ "--reveal-delay": "150ms" } as React.CSSProperties}
           className="w-full pb-6"
         >
           {PROJECTS_DATA.map((project) => (
             <SwiperSlide key={project.id} className="h-auto">
-              <div className="bg-[#121312] border border-zinc-800/80 rounded-[2rem] p-5 sm:p-6 flex flex-col justify-between h-full group hover:border-zinc-700 transition-all duration-300 shadow-xl">
+              <div className="bg-[#121312] border border-zinc-800/80 rounded-[2rem] p-5 sm:p-6 flex flex-col justify-between h-full group hover:border-[#9EFF00]/50 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(158,255,0,0.12)] transition-all duration-500 ease-out shadow-xl">
                 {/* Project Image Box */}
                 <div>
                   <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden mb-5 bg-zinc-900">

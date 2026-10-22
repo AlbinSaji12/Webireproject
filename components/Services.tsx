@@ -530,19 +530,27 @@ export default function Services() {
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Section Pill Badge */}
-        <div className="mb-4 inline-flex items-center">
+        <div data-reveal="up" className="mb-4 inline-flex items-center">
           <span className="bg-[#e2f9c3] text-[#375215] text-xs font-semibold px-4 py-1.5 rounded-full tracking-wide">
             Services
           </span>
         </div>
 
         {/* Section Heading */}
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-black tracking-tight text-center mb-10">
+        <h2
+          data-reveal="up"
+          style={{ "--reveal-delay": "100ms" } as React.CSSProperties}
+          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-black tracking-tight text-center mb-10"
+        >
           What We Do
         </h2>
 
         {/* Dynamic Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div
+          data-reveal="up"
+          style={{ "--reveal-delay": "200ms" } as React.CSSProperties}
+          className="flex flex-wrap items-center justify-center gap-2 mb-12"
+        >
           {[
             { key: "all", label: "All Services" },
             { key: "design", label: "Design" },
@@ -565,44 +573,50 @@ export default function Services() {
 
         {/* 8-Card Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-          {filteredServices.map((service) => (
+          {filteredServices.map((service, index) => (
             <div
               key={service.id}
-              onMouseEnter={() => setHoveredCard(service.id)}
-              onMouseLeave={() => setHoveredCard(null)}
-              className={`bg-[#e5fcc8] rounded-[2rem] p-7 sm:p-8 flex flex-col justify-between min-h-[300px] transition-all duration-300 border border-[#d2f3a6]/60 cursor-pointer ${
-                hoveredCard === service.id
-                  ? "-translate-y-2 shadow-xl border-[#b6e87d] bg-[#def9bd]"
-                  : "shadow-xs hover:shadow-md"
-              }`}
+              data-reveal="up"
+              style={{ "--reveal-delay": `${(index % 4) * 90}ms` } as React.CSSProperties}
             >
-              {/* Card Top Section: Icon & Title & Description */}
-              <div>
-                {/* Service Icon */}
-                <div className="mb-6 flex items-center justify-start">
-                  {service.icon}
+              <div
+                data-tilt
+                onMouseEnter={() => setHoveredCard(service.id)}
+                onMouseLeave={() => setHoveredCard(null)}
+                className={`bg-[#e5fcc8] rounded-[2rem] p-7 sm:p-8 flex flex-col justify-between h-full min-h-[300px] transition-all duration-300 border border-[#d2f3a6]/60 cursor-pointer ${
+                  hoveredCard === service.id
+                    ? "-translate-y-2 shadow-xl border-[#b6e87d] bg-[#def9bd]"
+                    : "shadow-xs hover:shadow-md"
+                }`}
+              >
+                {/* Card Top Section: Icon & Title & Description */}
+                <div>
+                  {/* Service Icon */}
+                  <div className="mb-6 flex items-center justify-start">
+                    {service.icon}
+                  </div>
+
+                  {/* Service Title */}
+                  <h3 className="text-xl sm:text-[22px] font-bold text-black tracking-tight mb-3 leading-snug">
+                    {service.title}
+                  </h3>
+
+                  {/* Service Description */}
+                  <p className="text-gray-700 text-sm sm:text-[14.5px] leading-relaxed font-normal">
+                    {service.description}
+                  </p>
                 </div>
 
-                {/* Service Title */}
-                <h3 className="text-xl sm:text-[22px] font-bold text-black tracking-tight mb-3 leading-snug">
-                  {service.title}
-                </h3>
-
-                {/* Service Description */}
-                <p className="text-gray-700 text-sm sm:text-[14.5px] leading-relaxed font-normal">
-                  {service.description}
-                </p>
-              </div>
-
-              {/* Card Bottom Section: Tools */}
-              <div className="mt-8 pt-4 flex items-center gap-2 border-t border-[#d1f2a3]/60">
-                <span className="text-xs font-semibold text-gray-600 mr-1">
-                  Tools :
-                </span>
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  {service.tools.map((tool, idx) => (
-                    <React.Fragment key={idx}>{tool}</React.Fragment>
-                  ))}
+                {/* Card Bottom Section: Tools */}
+                <div className="mt-8 pt-4 flex items-center gap-2 border-t border-[#d1f2a3]/60">
+                  <span className="text-xs font-semibold text-gray-600 mr-1">
+                    Tools :
+                  </span>
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    {service.tools.map((tool, idx) => (
+                      <React.Fragment key={idx}>{tool}</React.Fragment>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
