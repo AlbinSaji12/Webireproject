@@ -7,12 +7,10 @@ import Process from "@/components/Process";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import MotionProvider from "@/components/MotionProvider";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#181918] text-white flex flex-col selection:bg-[#9EFF00] selection:text-black">
-      <MotionProvider />
       <Header />
       <Hero />
       <Services />

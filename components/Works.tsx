@@ -9,6 +9,7 @@ import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import RevealWords from "@/components/RevealWords";
 
 // --- Tool Icons ---
 
@@ -163,12 +164,15 @@ export default function Works() {
     >
       <div className="max-w-7xl mx-auto">
         {/* Top Tag & Title */}
-        <div data-reveal="up" className="flex flex-col items-center mb-8 sm:mb-12">
-          <span className="bg-[#2a2c2a] text-zinc-300 text-xs font-semibold px-4 py-1.5 rounded-full border border-zinc-700/40 mb-4 tracking-wide">
+        <div className="flex flex-col items-center mb-8 sm:mb-12">
+          <span data-reveal="up" className="bg-[#2a2c2a] text-zinc-300 text-xs font-semibold px-4 py-1.5 rounded-full border border-zinc-700/40 mb-4 tracking-wide">
             Works
           </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight text-center">
-            Work Showcase
+          <h2
+            data-reveal="words"
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight text-center"
+          >
+            <RevealWords lines={["Work Showcase"]} delay={100} />
           </h2>
         </div>
 

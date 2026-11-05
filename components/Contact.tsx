@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronDown, CheckCircle } from "lucide-react";
+import RevealWords from "@/components/RevealWords";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -48,10 +49,11 @@ export default function Contact() {
           </div>
 
           {/* Title */}
-          <h2 className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-white tracking-tight leading-[1.12] mb-6">
-            Let’s Talk About Your
-            <br />
-            Next Big Move
+          <h2
+            data-reveal="words"
+            className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-white tracking-tight leading-[1.12] mb-6"
+          >
+            <RevealWords lines={["Let’s Talk About Your", "Next Big Move"]} delay={150} />
           </h2>
 
           {/* Description */}

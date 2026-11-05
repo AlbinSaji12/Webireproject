@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import RevealWords from "@/components/RevealWords";
 
 export default function About() {
   return (
@@ -66,14 +67,12 @@ export default function About() {
 
         {/* Main Headline */}
         <h2
-          data-reveal="up"
-          style={{ "--reveal-delay": "100ms" } as CSSProperties}
+          data-reveal="words"
           className="text-3xl sm:text-5xl md:text-6xl lg:text-[66px] font-extrabold text-black tracking-tight leading-[1.1] mb-8 max-w-3xl">
-          We’re Designers,
-          <br />
-          Developers & Builders
-          <br />
-          for Bold Ideas
+          <RevealWords
+            lines={["We’re Designers,", "Developers & Builders", "for Bold Ideas"]}
+            delay={100}
+          />
         </h2>
 
         {/* Description Paragraph */}
