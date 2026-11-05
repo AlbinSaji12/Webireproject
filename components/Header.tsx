@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import MobileMenu from "@/components/MobileMenu";
 
 const NAV_LINKS = [
   { href: "/projects", label: "Projects" },
@@ -24,7 +25,7 @@ export default function Header() {
       </Link>
 
       {/* Navigation Links */}
-      <nav className="hidden md:flex items-center gap-8 lg:gap-10 text-zinc-300 font-medium text-sm lg:text-base">
+      <nav className="hidden min-[1025px]:flex items-center gap-8 lg:gap-10 text-zinc-300 font-medium text-sm lg:text-base">
         {NAV_LINKS.map((link) => (
           <Link
             key={link.href}
@@ -36,17 +37,22 @@ export default function Header() {
         ))}
       </nav>
 
-      {/* Contact CTA Button */}
-      <Link
-        href="/contact"
-        data-magnetic
-        className="group relative inline-flex items-center gap-2.5 bg-[#9EFF00] hover:bg-[#8ee600] text-black font-semibold text-sm lg:text-base pl-5 pr-2 py-2 rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(158,255,0,0.35)] hover:shadow-[0_0_35px_rgba(158,255,0,0.6)] hover:scale-105"
-      >
-        <span>Get Started</span>
-        <span className="flex items-center justify-center w-7 h-7 bg-black text-white rounded-full transition-transform duration-300 group-hover:rotate-45">
-          <ArrowUpRight className="w-4 h-4" />
-        </span>
-      </Link>
+      <div className="flex items-center gap-3">
+        {/* Contact CTA Button (moves into the mobile menu on small phones) */}
+        <Link
+          href="/contact"
+          data-magnetic
+          className="group relative hidden sm:inline-flex items-center gap-2.5 bg-[#9EFF00] hover:bg-[#8ee600] text-black font-semibold text-sm lg:text-base pl-5 pr-2 py-2 rounded-full transition-all duration-300 shadow-[0_0_25px_rgba(158,255,0,0.35)] hover:shadow-[0_0_35px_rgba(158,255,0,0.6)] hover:scale-105"
+        >
+          <span>Get Started</span>
+          <span className="flex items-center justify-center w-7 h-7 bg-black text-white rounded-full transition-transform duration-300 group-hover:rotate-45">
+            <ArrowUpRight className="w-4 h-4" />
+          </span>
+        </Link>
+
+        {/* Hamburger menu at 1024px and below */}
+        <MobileMenu links={NAV_LINKS} />
+      </div>
     </header>
   );
 }
