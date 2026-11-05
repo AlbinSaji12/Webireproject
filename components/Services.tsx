@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import RevealWords from "@/components/RevealWords";
 
 // --- Tool Icon Components ---
 
@@ -538,11 +539,10 @@ export default function Services() {
 
         {/* Section Heading */}
         <h2
-          data-reveal="up"
-          style={{ "--reveal-delay": "100ms" } as React.CSSProperties}
+          data-reveal="words"
           className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-black tracking-tight text-center mb-10"
         >
-          What We Do
+          <RevealWords lines={["What We Do"]} delay={100} />
         </h2>
 
         {/* Dynamic Category Filter Tabs */}

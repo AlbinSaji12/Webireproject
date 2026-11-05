@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import type { CSSProperties } from "react";
+import { Fragment, type CSSProperties } from "react";
 
 const BADGES = [
   {
@@ -34,7 +34,42 @@ const BADGES = [
   },
 ];
 
-const HEADLINE_DELAYS = [150, 280, 410];
+// Headline lines as segments; serif segments render in the italic serif face.
+const HEADLINE: { text: string; serif?: boolean }[][] = [
+  [{ text: "Your " }, { text: "Brand", serif: true }, { text: ", Elevated" }],
+  [{ text: "— Let’s Build What" }],
+  [{ text: "Matters." }],
+];
+
+const HEADLINE_TEXT = HEADLINE.map((line) =>
+  line.map((segment) => segment.text).join("")
+).join(" ");
+
+const HEADLINE_START = 200;
+const WORD_STAGGER = 90;
+
+type Word = { index: number; parts: { text: string; serif: boolean }[] };
+
+// Split each line into words, numbering words across the whole headline so
+// the stagger runs continuously from the first line to the last. A word can
+// mix styles (e.g. serif "Brand" followed by a plain comma).
+const HEADLINE_LINES: Word[][] = (() => {
+  let index = 0;
+  return HEADLINE.map((line) => {
+    const words: Word["parts"][] = [[]];
+    for (const segment of line) {
+      segment.text.split(" ").forEach((piece, i) => {
+        if (i > 0) words.push([]);
+        if (piece) words[words.length - 1].push({ text: piece, serif: !!segment.serif });
+      });
+    }
+    return words
+      .filter((parts) => parts.length > 0)
+      .map((parts) => ({ index: index++, parts }));
+  });
+})();
+
+const HEADLINE_END = HEADLINE_START + HEADLINE_LINES.flat().length * WORD_STAGGER;
 
 export default function Hero() {
   return (
@@ -91,30 +126,35 @@ export default function Hero() {
             </div>
           ))}
 
-          {/* Headline Text: each line slides up from behind a mask */}
+          {/* Headline Text: words blur in one by one */}
           <h1
+            aria-label={HEADLINE_TEXT}
             style={{ "--depth": 10 } as CSSProperties}
             className="parallax text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-bold text-white tracking-tight leading-[1.15] max-w-4xl"
           >
-            <span className="hero-line">
-              <span style={{ "--d": `${HEADLINE_DELAYS[0]}ms` } as CSSProperties}>
-                Your{" "}
-                <span className="font-serif italic font-normal text-white">
-                  Brand
-                </span>
-                , Elevated
+            {HEADLINE_LINES.map((words, lineIndex) => (
+              <span key={lineIndex} aria-hidden className="block">
+                {words.map((word, wordIndex) => (
+                  <Fragment key={word.index}>
+                    {wordIndex > 0 && " "}
+                    <span
+                      className="hero-word"
+                      style={{ "--d": `${HEADLINE_START + word.index * WORD_STAGGER}ms` } as CSSProperties}
+                    >
+                      {word.parts.map((part, partIndex) =>
+                        part.serif ? (
+                          <span key={partIndex} className="font-serif italic font-normal">
+                            {part.text}
+                          </span>
+                        ) : (
+                          <Fragment key={partIndex}>{part.text}</Fragment>
+                        )
+                      )}
+                    </span>
+                  </Fragment>
+                ))}
               </span>
-            </span>
-            <span className="hero-line">
-              <span style={{ "--d": `${HEADLINE_DELAYS[1]}ms` } as CSSProperties}>
-                — Let’s Build What
-              </span>
-            </span>
-            <span className="hero-line">
-              <span style={{ "--d": `${HEADLINE_DELAYS[2]}ms` } as CSSProperties}>
-                Matters.
-              </span>
-            </span>
+            ))}
           </h1>
 
         </div>
@@ -122,7 +162,7 @@ export default function Hero() {
         {/* Hero Primary CTA: Let's Talk */}
         <div
           className="hero-fade-up mt-6 md:mt-10 z-20"
-          style={{ "--d": "650ms" } as CSSProperties}
+          style={{ "--d": `${HEADLINE_END}ms` } as CSSProperties}
         >
           <Link
             href="#contact"
